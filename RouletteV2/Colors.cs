@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RouletteV2
 {
 
-    enum Numbers 
+    enum Colors 
     {
         Green,
         Red,

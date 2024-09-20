@@ -2,18 +2,36 @@
 
 Console.WriteLine("BID for Color or Number: ");
 string userChoise = Console.ReadLine();
-
 bool userPlaying = true;
-
-Random rand = new();
-int randNumber = rand.Next(0, 37);
-
 string userBidColor;
 int userBidNumber;
+
+string color;
+
+Random rand = new();
+
+static void getColor()
+{
+    if (randNumber > 0 && randNumber % 2 == 0)
+    {
+        color = "Black";
+    }
+    else if (randNumber > 0)
+    {
+        color = "Red";
+    }
+    else
+    {
+        color = "Green";
+    }
+
+}
+
 
 
 
 while (userPlaying)
+    int randNumber = rand.Next(0, 37);
 
     if (userChoise == "c")
     {
@@ -21,8 +39,13 @@ while (userPlaying)
         userBidColor = Console.ReadLine();
         if (userBidColor == "r")
         {
-            Console.WriteLine("RED");
+            if (color == "Red")
+            {
+                Console.WriteLine($"YOU WIN! Ball is in the {randNumber} {color}! ");
+            }
             userChoise = null;
+
+
         }
         else if (userBidColor == "b")
         {

@@ -6,56 +6,55 @@ bool userPlaying = true;
 string userBidColor;
 int userBidNumber;
 
-string color;
 
 Random rand = new();
-
-static void getColor()
+static string GetColor(int randNumber)
 {
+    string color;
     if (randNumber > 0 && randNumber % 2 == 0)
     {
         color = "Black";
+        return color;
     }
     else if (randNumber > 0)
     {
         color = "Red";
+        return color;
     }
     else
     {
         color = "Green";
+        return color;
     }
 
 }
 
 
 
-
 while (userPlaying)
-    int randNumber = rand.Next(0, 37);
+{
 
+
+    int randNumber = rand.Next(0, 37);
     if (userChoise == "c")
     {
         Console.WriteLine("enter Color R or B :");
         userBidColor = Console.ReadLine();
-        if (userBidColor == "r")
+        if (userBidColor == "r" && randNumber % 2 != 0)
         {
-            if (color == "Red")
-            {
-                Console.WriteLine($"YOU WIN! Ball is in the {randNumber} {color}! ");
-            }
-            userChoise = null;
-
+            Console.WriteLine($"YOU WIN ! [{randNumber} | {GetColor(randNumber)}]");
 
         }
-        else if (userBidColor == "b")
+        else if (userBidColor == "b" && randNumber > 0 && randNumber % 2 == 0)
         {
-            Console.WriteLine("BLACK");
-            userChoise = null;
+            Console.WriteLine($"YOU WIN ! [{randNumber} | {GetColor(randNumber)}]");
         }
         else
         {
-            continue;
+            Console.WriteLine($"You Loose :( ...  [{randNumber} | {GetColor(randNumber)}]");
         }
+        userChoise = null;
+
     }
     else if (userChoise == "n")
     {
@@ -65,8 +64,10 @@ while (userPlaying)
 
     else
     {
+        Console.WriteLine();
         Console.WriteLine("Choose c, n or q for QUIT... ");
         userChoise = Console.ReadLine();
+        randNumber = rand.Next(0, 37);
         if (userChoise == "q")
         {
             userPlaying = false;
@@ -76,3 +77,4 @@ while (userPlaying)
             userPlaying = true;
         }
     }
+}

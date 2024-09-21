@@ -58,7 +58,20 @@ while (userPlaying)
     }
     else if (userChoise == "n")
     {
-        Console.WriteLine("you choose N");
+        Console.WriteLine("Bid Number 0 - 36: ");
+        userBidNumber = Convert.ToInt32(Console.ReadLine());
+        while (userBidNumber < 0 || userBidNumber > 36) {
+            Console.WriteLine("ENTER 0 - 36: ");
+            userBidNumber = Convert.ToInt32(Console.ReadLine());
+        }
+        if(userBidNumber == randNumber)
+        {
+            Console.WriteLine($"YOU WIN ! [{randNumber} | {GetColor(randNumber)}]");
+        }
+        else
+        {
+            Console.WriteLine($"You Loose :( ...  [{randNumber} | {GetColor(randNumber)}]");
+        }
         userChoise = null;
     }
 
